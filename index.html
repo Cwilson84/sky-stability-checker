@@ -1,54 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"/>
-    <link rel="stylesheet" href="style.css">
-    <title>Weather Forecast</title>
-  </head>
-  <body>
-    <header class="bg-dark"> 
-      <h1 class="p-2 text-light text-center h1">Weather Dashboard</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <title>Weather Forecast</title>
+</head>
+
+<body>
+  <header class="bg-dark">
+    <h1 class="p-2 text-light text-center h1">Weather Dashboard</h1>
   </header>
 
-   <div class="m-4 p-4">
+  <div class="m-4 p-4">
     <div class="col-md-12">
       <div class="row">
         <h4 id="search-header">Search for a City:</h4>
         <form class="form-inline">
-          <input id="search-bar" class="form-control mr-sm-2" type="search" placeholder="Enter city name here" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input id="search-bar" class="form-control mr-sm-2" type="search" placeholder="Enter city name here"
+            aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search<span
+              class="oi oi-magnifying-glass"></span></button>
         </form>
         <ul class="list-group" id="search-history">
         </ul>
         <div class="col-md-9"></div>
-          <div class="card mt-2">
-            <div class="card-body">
-              <div class="d-flex flex-row ">
-                <h2 class="card-title align-self-center" id="city-name"></h2> 
-              </div>
+        <div class="card mt-2">
+          <div class="card-body">
+            <div class="d-flex flex-row ">
+              <h2 class="card-title align-self-center" id="city-name"></h2>
+            </div>
+            <h6 class="card-subtitle text-muted" id="city-temp">Temperature: </h6>
+            <h6 class="card-subtitle mt-3 text-muted" id="city-humid">Humidity: </h6>
+            <h6 class="card-subtitle mt-3 text-muted" id="city-wind">Wind Speed: </h6>
+          </div>
+        </div>
+        
+        <div>
+          <h2 class="card-title mt-3">5-Day Forecast:</h2>
+          <div class="row justify-content-between" id="five-day">
+              <!-- filled by displayWeather() -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+    integrity="sha512-uto9mlQzrs59VwILcLiRYeLK51uRlm8SjTmuYo2HV5lepuqDhM1OOTvFb+KcLOhO/e6cYdJ3Erc/ZV7CxexbWJw=="
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.3/dayjs.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous">
+  </script>
+  <script src="script.js"></script>
+</body>
 
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous">
-    </script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-      integrity="sha512-uto9mlQzrs59VwILcLiRYeLK51uRlm8SjTmuYo2HV5lepuqDhM1OOTvFb+KcLOhO/e6cYdJ3Erc/ZV7CxexbWJw=="
-      crossorigin="anonymous">
-    </script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous">
-    </script>
-    <script src="script.js"></script>
-  </body>
 </html>
