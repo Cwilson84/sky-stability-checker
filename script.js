@@ -1,23 +1,40 @@
 var searchHistory = [];
 var lastCitySearched = "";
 
-var getCityWeather = function getWeatherData(city) {
-  var cityName = city.trim();
-  var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=21d879b7b731a9f3ad1beaec9dc719e4&units=imperial";
-  return fetch(apiUrl)
-    .then(function(response) {
-      if (response.ok) {
-        return response.json().then(function(data) {
-          console.log(data);
+var displayCityWeather = function(data) {
+    var temperature = Math.round(data.main.temp);
+    var humidity = data.main.humidity;
+    var windSpeed = Math.round(data.wind.speed);
+
+    $("#city-temp").text("Temperature: " + temperature + "°F");
+    $("#city-humid").text("Humidity: " + humidity + "%");
+    $("#city-wind").text("Wind Speed: " + windSpeed + " mph");
+};
+
+  var getCityWeather = function getWeatherData(city) {
+    var cityName = $("#search-bar").val().trim();
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=21d879b7b731a9f3ad1beaec9dc719e4&units=imperial";
+    fetch(apiUrl)
+        .then (function(response) {
+            if (response.ok) {
+                response.json()
+        .then (function(data) {
+            displayCityWeather(data);
         });
-      } else {
-        alert("Error: " + response.statusText);
-      }
-    })
-    .catch(function(error) {
-      alert("Unable to connect to OpenWeather server. Please try again later.");
+            } else {
+                alert("Error: " + response.statusText);
+            }
+        })
+        .catch(function(error) {
+            alert("Unable to connect to OpenWeather server. Please try again later.");
     });
 };
+
+$("#search-button").click(function(event) {
+    event.preventDefault(); // prevent the form from submitting
+    var city = $("#search-bar").val().trim();
+    getCityWeather(city);
+});
 
 $(document).ready(function() {
   $("#search-button").click(function(event) {
@@ -26,3 +43,5 @@ $(document).ready(function() {
     getCityWeather(city);
   });
 });
+
+  
