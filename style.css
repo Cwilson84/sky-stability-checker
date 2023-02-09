@@ -6,3 +6,10 @@
     margin-right: .5em;
 }
 
+#city-date {
+    margin-bottom: .5em;
+}
+
+#five-day {
+    box-shadow: 5px 5px 10px;
+}
