@@ -20,7 +20,7 @@ N/A
 
 ## Screenshot
 
-![Screenshot of deployed site](/Develop/Screenshot-taskmaster-planbook.png?raw=true "Site Screenshot")
+![Screenshot of deployed site](/sky-stability-checker-screenshot.png?raw=true "Site Screenshot")
 Or view it live [cwilson84.github.io/sky-stability-checker](https://cwilson84.github.io/sky-stability-checker/)!
 
 ## Credits
